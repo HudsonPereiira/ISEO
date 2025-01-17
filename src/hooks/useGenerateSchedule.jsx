@@ -67,31 +67,25 @@ export const useGenerateSchedule = (availableDates, userRequests) => {
 
       // Ordenar usuários por antiguidade
       let sortedUsers = validUserInfo.sort((a, b) => {
-        // Índice da graduação no ranksOrder
         const rankA = ranksOrder.indexOf((a.rank || "").toLowerCase());
         const rankB = ranksOrder.indexOf((b.rank || "").toLowerCase());
 
-        // Validar índices
         if (rankA === -1 || rankB === -1) {
-          // Se um rank não for encontrado, colocá-lo no final
           return rankA === -1 ? 1 : -1;
         }
 
-        // Comparar pela graduação no ranksOrder (mais modernos têm índice menor)
         if (rankA !== rankB) {
-          return rankA - rankB; // Graduações modernas antes das antigas
+          return rankA - rankB;
         }
 
-        // Dentro da mesma graduação, comparar pelo RG (maior RG é mais moderno)
         const rgA = parseInt(a.rg, 10);
         const rgB = parseInt(b.rg, 10);
 
         if (isNaN(rgA) || isNaN(rgB)) {
-          // Se um RG não for numérico, colocá-lo no final
           return isNaN(rgA) ? 1 : -1;
         }
 
-        return rgB - rgA; // Maior RG é mais moderno
+        return rgB - rgA;
       });
 
       console.log("Usuários ordenados por antiguidade (após sort):");
@@ -101,37 +95,22 @@ export const useGenerateSchedule = (availableDates, userRequests) => {
         );
       });
 
-      // Filas de controle
-      let notYetAssignedQueue = [...sortedUsers]; // Garantir que todos passem pela fila ao menos uma vez
-      let allUsersQueue = [...sortedUsers]; // Fila completa para rodadas adicionais
-      let alreadyAssignedThisRound = new Set(); // Controle dos usuários já escalados nesta rodada
+      let notYetAssignedOnce = [...sortedUsers];
+      let allUsersQueue = [...sortedUsers];
+      let alreadyAssignedThisRound = new Set();
 
-      // Loop para preencher as escalas
       for (const availableDate of availableDates) {
         const assignedUsers = [];
         let slotsRemaining = availableDate.slots;
 
-        while (slotsRemaining > 0) {
-          let user;
+        // Primeira rodada: todos devem ser escalados ao menos uma vez
+        while (slotsRemaining > 0 && notYetAssignedOnce.length > 0) {
+          let user = notYetAssignedOnce.shift();
 
-          // Priorizar usuários que ainda não foram escalados na rodada atual
-          if (notYetAssignedQueue.length > 0) {
-            user = notYetAssignedQueue.shift(); // Escalar da fila de não escalados
-          } else {
-            // Reiniciar a fila após completar uma rodada
-            notYetAssignedQueue = [...allUsersQueue];
-            alreadyAssignedThisRound.clear(); // Resetar o controle da rodada
-            user = notYetAssignedQueue.shift();
-          }
-
-          if (!user) break;
-
-          // Verificar se o usuário pode ser escalado no dia
           if (
-            user.assignedCount < user.maxShifts && // Não excedeu o limite de escalas
-            user.availableDates.includes(formatDateToISO(availableDate.date)) && // Está disponível no dia
-            !assignedUsers.find((u) => u.userId === user.userId) && // Não foi escalado no mesmo dia
-            !alreadyAssignedThisRound.has(user.userId) // Não foi escalado nesta rodada
+            user.assignedCount < user.maxShifts &&
+            user.availableDates.includes(formatDateToISO(availableDate.date)) &&
+            !assignedUsers.find((u) => u.userId === user.userId)
           ) {
             assignedUsers.push({
               userId: user.userId,
@@ -142,13 +121,57 @@ export const useGenerateSchedule = (availableDates, userRequests) => {
               motorista: user.motorista ? "Sim" : "Não",
             });
 
-            user.assignedCount += 1; // Incrementar contador de escalas
-            alreadyAssignedThisRound.add(user.userId); // Marcar como escalado nesta rodada
+            user.assignedCount += 1;
             slotsRemaining--;
           }
         }
 
-        // Adicionar os usuários escalados no dia ao cronograma final
+        // Segunda e próximas rodadas: priorizar menos escalados e mais modernos
+        let notYetAssignedQueue = allUsersQueue.filter(
+          (u) => u.assignedCount < u.maxShifts
+        );
+
+        while (slotsRemaining > 0) {
+          notYetAssignedQueue.sort((a, b) => {
+            if (a.assignedCount !== b.assignedCount) {
+              return a.assignedCount - b.assignedCount;
+            }
+
+            const rankA = ranksOrder.indexOf((a.rank || "").toLowerCase());
+            const rankB = ranksOrder.indexOf((b.rank || "").toLowerCase());
+
+            if (rankA !== rankB) {
+              return rankA - rankB;
+            }
+
+            const rgA = parseInt(a.rg, 10);
+            const rgB = parseInt(b.rg, 10);
+            return rgB - rgA;
+          });
+
+          let user = notYetAssignedQueue.shift();
+
+          if (!user) break;
+
+          if (
+            user.assignedCount < user.maxShifts &&
+            user.availableDates.includes(formatDateToISO(availableDate.date)) &&
+            !assignedUsers.find((u) => u.userId === user.userId)
+          ) {
+            assignedUsers.push({
+              userId: user.userId,
+              rank: user.rank,
+              displayName: user.displayName,
+              rg: user.rg,
+              nf: user.nf,
+              motorista: user.motorista ? "Sim" : "Não",
+            });
+
+            user.assignedCount += 1;
+            slotsRemaining--;
+          }
+        }
+
         if (assignedUsers.length > 0) {
           schedule.push({
             date: availableDate.date,
@@ -156,11 +179,6 @@ export const useGenerateSchedule = (availableDates, userRequests) => {
           });
         }
       }
-
-      // Atualizar as filas para próxima rodada
-      allUsersQueue = sortedUsers.filter((u) => u.assignedCount < u.maxShifts);
-      notYetAssignedQueue = [...allUsersQueue];
-      alreadyAssignedThisRound.clear();
 
       console.log("Escala final gerada:", schedule);
       setGeneratedSchedule(schedule);
