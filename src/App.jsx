@@ -13,7 +13,7 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import SetForm from "./pages/setform/SetForm";
 import Admin from "./pages/admin/Admin";
-import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import AuthorizedUsers from "./pages/authorizedUsers/AuthorizedUsers";
 
 function App() {
