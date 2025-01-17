@@ -1,4 +1,4 @@
-import styles from "../login/login.module.css";
+import styles from "../login/Login.module.css";
 import { useState, useEffect } from "react";
 import { useAutentication } from "../../hooks/useAutentication";
 import { useNavigate } from "react-router-dom";
