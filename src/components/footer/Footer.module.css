@@ -1,0 +1,75 @@
+/* Estilos gerais (desktop e mobile) */
+
+/* Contêiner para organizar o layout */
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o contêiner ocupe toda a tela */
+}
+
+/* Conteúdo principal */
+.content {
+  flex: 1; /* Faz o conteúdo crescer para ocupar o espaço disponível */
+  padding: 2rem; /* Espaçamento interno */
+}
+
+
+.footer {
+  height: auto;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.6); /* Sombra opcional */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+
+.footer span {
+  font-weight: bold;
+  display: block;
+  margin: 0;
+}
+
+.footer div {
+  font-size: 0.5rem; /* Tamanho de fonte menor para os detalhes adicionais */
+  margin-top: 0.5rem; /* Ajuste de espaçamento */
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+/* Garantir consistência em telas menores (smartphones) */
+@media (max-width: 768px) {
+
+
+
+  .footer {
+    height: 80px; /* Mesmo valor */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 0.7rem;
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 1rem;
+    margin-top: 5rem;
+    box-shadow: rgba(0, 0, 0, 0.597) 0px -1px 10px 0px;
+
+  }
+
+  .footer div {
+    font-size: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer p {
+    margin: 0.5rem 0;
+  }
+}

@@ -1,0 +1,132 @@
+/* Estilo de links e botões da navbar */
+a,
+nav button {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: #ccc; /* Cinza para links */
+  transition: 0.4s;
+  font-size: 1em;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+section {
+  padding: 1rem; /* Adiciona algum espaçamento para o conteúdo */
+}
+
+/* Efeito hover da navbar */
+a:hover,
+nav button:hover {
+  color: #fff; /* Branco ao passar o mouse */
+}
+
+/* Navbar (Ajuste das cores para preto e cinza) */
+nav {
+  background-color: #333; /* Cinza escuro */
+  padding: 1em;
+  margin-bottom: 5em;
+}
+
+nav .active {
+  color: #fff; /* Cor ativa branca */
+}
+
+
+.navbar {
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.597) 0px -2px 10px 0px;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em 2em;
+    height: 35px;
+    
+}
+
+.brand {
+    font-size: 1.2em
+}
+
+.brand span {
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.links_list {
+    display: flex;
+    list-style: none;
+    justify-content: right;
+}
+
+.links_list li {
+    margin-right: 1em;
+}
+
+.links_list li a {
+    padding: 0.4em 0.6em;
+}
+
+.active {
+    background-color: #000000;
+    color: #FFF
+  }
+
+
+
+
+
+
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .navbar {
+      width: 92%; /* Ocupa toda a largura da tela */
+      padding: 0.5em 1em; /* Ajusta o padding */
+      height: auto; /* Altura adaptável */
+      flex-direction: row; /* Itens em linha horizontal */
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .brand {
+      font-size: 1em; /* Ajusta o tamanho da fonte */
+      margin-right: 1em;
+    }
+  
+    .links_list {
+      display: flex;
+      flex-direction: row; /* Itens em linha horizontal */
+      justify-content: flex-end;
+      align-items: center;
+      width: auto; /* Ajuste automático */
+      flex-wrap: nowrap; /* Impede quebra de linha */
+    }
+  
+    .links_list li {
+      margin-right: 0.5em;
+    }
+  
+    .links_list li a {
+      padding: 0.4em 0.6em; /* Ajusta o padding */
+      font-size: 1em; /* Tamanho da fonte consistente */
+    }
+  
+    .active {
+      background-color: #000000;
+      color: #FFF;
+    }
+  
+    .logoutButton {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0.4em 0.6em;
+      font-size: 1em;
+      color: #ccc;
+      transition: color 0.4s;
+    }
+  
+    .logoutButton:hover {
+      color: #fff;
+    }
+  }

@@ -1,0 +1,63 @@
+/* Admin.module.css */
+
+/* Estilos principais da página */
+
+
+  
+
+  
+  
+ 
+  
+  
+
+
+
+    /* Estilos para a lista de datas disponíveis */
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 1em;
+      width: 100%;
+      max-width: 800px;
+    }
+    
+    li {
+      padding: 1em;
+      background-color: #333;
+      color: #fff;
+      margin-bottom: 0.1em;
+      text-align: center;
+      border-radius: 4px;
+    }
+    
+  
+
+
+    .btn {
+      width: 100%; /* Faz os botões ocuparem toda a largura */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+
+@media screen and (max-width: 768px) {
+     /* Estilos para a lista de datas disponíveis */
+     ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      max-width: 800px;
+    }
+    
+    li {
+      padding: 1em;
+      background-color: #333;
+      color: #fff;
+      margin-bottom: 0.1em;
+      text-align: center;
+      border-radius: 4px;
+    }}

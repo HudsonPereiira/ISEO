@@ -1,0 +1,47 @@
+.h2,
+.h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.p {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.dates2 {
+    display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
+    justify-content: center; /* Alinha no eixo vertical */
+    align-items: center; /* Centraliza no eixo horizontal */
+    text-align: center; /* Centraliza o texto */
+  }
+  
+  .dates2 ul {
+    list-style: none; /* Remove os marcadores da lista */
+    padding: 0; /* Remove padding padrão */
+    margin: 0; /* Remove margem padrão */
+  }
+  
+  .dates2 li {
+    display: flex; /* Torna os itens da lista flexíveis */
+    justify-content: center; /* Alinha os itens no centro */
+    align-items: center; /* Centraliza o conteúdo */
+    margin-bottom: 1rem; /* Adiciona espaço entre os itens */
+  }
+  
+  .dates2 li span {
+    margin-right: 1rem; /* Espaço entre a data e o botão */
+  }
+  
+  .btn_delete {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  

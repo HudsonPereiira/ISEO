@@ -1,0 +1,331 @@
+/* Corpo */
+body {
+  background-color: #333; /* Cinza escuro */
+  color: #fff;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+/* Estilos dos inputs */
+
+input {
+  padding: 0.8em;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 1em;
+  height: 30px;
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  color: #ccc;
+  display: flex;
+}
+
+/* Seção que envolve cada container */
+section {
+  width: 100%;
+  max-width: 800px; /* Limita a largura para garantir que os containers tenham a mesma largura */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Estilo de placeholder */
+input::placeholder {
+  font-family: "Montserrat", sans-serif;
+  color: #aaa; /* Cinza claro */
+}
+
+/* Estilo de campos em foco */
+input:focus {
+  outline: none;
+}
+
+/* estilos para os forms */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin: 1em 0 0.5em 0;
+  font-size: 1em;
+}
+
+/* Estilos gerais para os selects */
+.select {
+  background-color: #2f2f2f; /* Cinza escuro */
+  color: #fff; /* Texto branco */
+  border: 1px solid #444; /* Borda cinza clara */
+  border-radius: 8px; /* Bordas arredondadas */
+  padding: 10px; /* Padding interno */
+  width: 280px; /* Largura fixa */
+  font-size: 1em; /* Tamanho da fonte */
+  transition: background-color 0.3s, border-color 0.3s; /* Transições suaves */
+  text-align: center;
+}
+
+/* Estilo para o select quando o usuário passa o mouse */
+.select:hover {
+  background-color: #444; /* Torna o fundo um pouco mais claro ao passar o mouse */
+}
+
+/* Estilo para o select quando ele é focado (clicado) */
+.select:focus {
+  background-color: #3a3a3a; /* Fundo ainda mais claro ao focar */
+  outline: none; /* Remove a borda padrão do navegador */
+}
+
+/* Estilos para o datepicker */
+
+.dates {
+  display: flex; /* Habilita o uso de flexbox */
+  flex-direction: column; /* Organiza os itens na direção vertical */
+  justify-content: center; /* Centraliza os itens na direção vertical */
+  align-items: center; /* Centraliza os itens na direção horizontal */
+  height: auto;
+  /* Define a altura do container como 100% da altura da tela */
+  /* Margem externa para adicionar espaço nas bordas */
+  padding: 10px; /* Padding interno */
+  border-radius: 8px; /* Bordas arredondadas */
+
+  font-size: 1em; /* Tamanho da fonte */
+  transition: background-color 0.3s, border-color 0.3s; /* Transições suaves */
+  text-align: center; /* Centraliza o texto */
+}
+
+/* Estilo para o dia selecionado */
+.selectedDay {
+  background-color: #1a8918 !important; /* Cor verde */
+  color: white !important; /* Texto branco */
+  border-radius: 50%; /* Bordas arredondadas */
+}
+
+.table-container {
+  width: 100%; /* Garante que o contêiner ocupe toda a largura */
+  overflow-x: auto; /* Adiciona rolagem horizontal, se necessário */
+  -webkit-overflow-scrolling: touch; /* Rolagem suave no iOS */
+  margin-top: 1em; /* Espaçamento entre o conteúdo e a tabela */
+}
+
+table {
+  width: 100%; /* Garante que a tabela ocupe toda a largura disponível */
+  table-layout: fixed; /* Evita colunas de tamanho variável */
+  border-collapse: collapse; /* Remove os espaços entre as células */
+  background-color: #333; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+}
+
+th,
+td {
+  padding: 12px; /* Espaçamento interno das células */
+  text-align: center; /* Centraliza o texto */
+  border: 1px solid #ccc; /* Adiciona borda às células */
+}
+
+th {
+  background-color: #444; /* Fundo do cabeçalho */
+}
+
+td {
+  background-color: #222; /* Fundo das células */
+}
+
+tr:nth-child(even) td {
+  background-color: #333; /* Fundo alternado para linhas pares */
+}
+
+tr:hover td {
+  background-color: #555; /* Fundo ao passar o mouse */
+}
+
+h1 {
+  text-align: center;
+  margin-top: -4rem;
+}
+
+h2,
+h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 768px) {
+  /* Garante que o corpo mantenha os elementos centralizados */
+  body {
+    justify-content: flex-start; /* Mantém os elementos no topo */
+    width: 100%;
+  }
+
+  /* Formulário e entradas */
+  form {
+    width: 100%;
+    max-width: 100%; /* Garante que o formulário ocupe toda a largura disponível */
+  }
+
+  input {
+    width: 100%; /* Ocupa toda a largura disponível */
+    max-width: 100%; /* Remove a limitação de largura */
+  }
+
+  /* Estilo de tabelas */
+  .table-container {
+    overflow-x: scroll; /* Garante a rolagem em telas menores */
+  }
+
+  table {
+    font-size: 0.85em; /* Reduz o tamanho da fonte em telas menores */
+  }
+
+  th,
+  td {
+    padding: 8px; /* Reduz o espaçamento interno das células */
+  }
+
+  /* Botões */
+  .btn {
+    width: 100%; /* Faz os botões ocuparem toda a largura */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+
+  .btn_delete {
+    width: 50%; /* Faz o botão "Excluir" ocupar toda a largura */
+    height: auto; /* Ajusta a altura automaticamente */
+    margin: 0.5em 0; /* Margem superior e inferior para espaçamento */
+  }
+
+  /* Centraliza os contêineres */
+  .button-container {
+    width: 50%;
+    justify-content: center;
+  }
+
+  /* Ajusta o texto */
+  h2,
+  h3,
+  h4 {
+    font-size: 1.2em; /* Reduz o tamanho dos títulos */
+    text-align: center;
+  }
+
+  /* Selects */
+  .select {
+    width: 100%; /* Faz os selects ocuparem toda a largura */
+    max-width: 100%; /* Remove a limitação de largura */
+  }
+
+  /* Lista de datas disponíveis */
+  ul {
+    padding: 0;
+    margin: 0;
+    width: 100%; /* Garante que a lista ocupe toda a largura */
+  }
+
+  li {
+    padding: 1em;
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+  }
+
+  /* Datepicker */
+  .dates {
+    width: 100%; /* Centraliza e ajusta a largura */
+    max-width: 100%;
+  }
+
+  /* Garantia de que o layout seja responsivo */
+  section {
+    width: 100%;
+    max-width: 100%; /* Remove a limitação de largura */
+    padding: 1em; /* Adiciona espaçamento interno */
+  }
+}
+
+/* Remover as setinhas de campos numéricos */
+input[type="number"] {
+  -webkit-appearance: none; /* Remover as setinhas no Chrome, Safari e Edge */
+  -moz-appearance: textfield; /* Remover as setinhas no Firefox */
+  appearance: none; /* Remover as setinhas nos navegadores compatíveis */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Remover o espaço extra */
+}
+
+/* Botões gerais */
+.btn {
+  background-color: #1a8918; /* Verde */
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 120px;
+  font-weight: bold;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.2s;
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hover para botões gerais */
+.btn:hover {
+  background-color: #0f730c; /* Verde mais escuro */
+  transform: scale(1.05);
+}
+
+/* Botões de exclusão */
+.btn_delete {
+  display: flexbox;
+  background-color: red;
+  color: #fff;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  border-radius: 10px;
+  height: 1.2em;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn_delete:hover {
+  background-color: #af0000; /* Vermelhor mais escuro */
+  transform: scale(1.05);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Espaçamento entre o botão e os elementos acima */
+}

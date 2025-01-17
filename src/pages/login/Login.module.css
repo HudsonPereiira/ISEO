@@ -1,0 +1,13 @@
+.forgotPasswordLink {
+    display: block;          /* Torna o link um bloco para que possamos centralizá-lo */
+    text-align: center;      /* Alinha o texto do link ao centro */
+    margin: 1em auto;        /* Adiciona uma margem automática para centralizar o bloco */
+    font-size: 0.8em;          /* Tamanho da fonte */
+    color: #007bff;          /* Cor do link (pode ser alterada conforme necessário) */
+    text-decoration: none;   /* Remove o sublinhado, se desejar */
+  }
+  
+  .forgotPasswordLink:hover {
+    text-decoration: underline; /* Adiciona sublinhado no hover */
+  }
+  
